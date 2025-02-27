@@ -2,7 +2,6 @@ export { openPopup, closePopup };
 
 // Функция открытия попапов
 function openPopup(popup) {
-
     popup.classList.add('popup_is-opened');
     document.addEventListener('keydown', closeByEsc);
     popup.addEventListener('click', closeByClick);

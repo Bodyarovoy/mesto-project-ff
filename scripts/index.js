@@ -20,7 +20,6 @@ const formElementNewCard = document.querySelector('.popup_type_new-card');
 const cardInput = document.querySelector('.popup__input_type_card-name');
 const urlInput = document.querySelector('.popup__input_type_url');
 
-
 // Открытие попапов
 const popupNewPlase = document.querySelector('.popup_type_new-card');
 const popupEditProfile = document.querySelector('.popup_type_edit');
@@ -29,7 +28,6 @@ const popupImage = document.querySelector('.popup_type_image');
 const buttonNewPlase = document.querySelector('.profile__add-button');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonImage = document.querySelector('.card__image');
-
 
 //Изменение данных профиля
 const profileTitle = document.querySelector('.profile__title');
@@ -42,7 +40,6 @@ const jobInput = document.querySelector('.popup__input_type_description');
 // Попап с картинкой
 const imageLink = document.querySelector('.popup__image');
 const imageAlt = document.querySelector('.popup__caption');
-
 
 // Слушатели закрытия попапов по нажатию на оверлей
 popupEditProfile.addEventListener('click', closePopup);
@@ -78,7 +75,6 @@ buttonEditProfile.addEventListener('click', () => {
 buttonImage.addEventListener('click', () => {
   openPopup(popupImage);
 });
-
 
 // Обработчик сохранения данных профиля
 function handleFormElementEditSubmit(evt) {

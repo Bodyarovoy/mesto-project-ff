@@ -1,7 +1,6 @@
 import { cardTemplate } from '../index.js';
 export { initialCards, createCard, deleteCardCallback, toggleLikeCallback };
 
-
 const initialCards = [
     {
       name: "Архыз",
@@ -30,7 +29,6 @@ const initialCards = [
 ];
 
 // Функция создания карточки
-
 function createCard(cardContent, deleteCardCallback, toggleLikeCallback, openImagePopupCallback) {
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
     const cardImageAttribute = cardElement.querySelector('.card__image');
