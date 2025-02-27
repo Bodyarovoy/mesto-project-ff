@@ -1,44 +1,55 @@
-import { popupEditProfile, nameInput, profileTitle, jobInput, profileDescription} from '../index.js';
-export { openModal, closeModal };
+export { openPopup, closePopup };
 
 
-// Функция открытыя попапов
-function openModal(popup) {
-  popup.classList.add('popup_is-opened');
-  // Если это попап редактирования профиля, заполняем форму
-  if (popup === popupEditProfile) {
-    nameInput.value = profileTitle.textContent;
-    jobInput.value = profileDescription.textContent;   
-  } 
-    document.addEventListener('keydown', closeModal);
-    popup.addEventListener('click', closeModal);
+// Функция открытия попапов
+function openPopup(popup) {
+    popup.classList.add('popup_is-opened');
+    document.addEventListener('keydown', closeByEsc);
+    popup.addEventListener('click', closeByClick);
 }
 
-function closeModal(popup) {
-  const activePopup = popup.currentTarget;
-  const openPopup = document.querySelector('.popup_is-opened');
+// Функция закрытия попапов
+function closePopup(popup) {
+    popup.classList.remove('popup_is-opened');
+    document.removeEventListener('keydown', closeByEsc);
+    popup.removeEventListener('click', closeByClick);
+  
+}
 
-  // Закрытие по клику на оверлей или по кнопке закрытия
-  if (popup.target === activePopup || popup.target.classList.contains('popup__close')) {
-    openPopup.classList.remove('popup_is-opened');
-    removeEventListeners();
-  }
-  // Закрытие по нажатию Escape
-  if (popup.key === 'Escape') {  
-    if (openPopup) {
-      openPopup.classList.remove('popup_is-opened');
-      removeEventListeners();
+// Обработчик закрытия по Escape
+function closeByEsc(event) {
+  if (event.key === 'Escape') {
+      const openPopup = document.querySelector('.popup_is-opened');
+      closePopup(openPopup);
     }
+
+}
+
+// Обработчик закрытия по клику на оверлей или кнопку закрытия
+function closeByClick(event) {
+   const activePopup = event.currentTarget;
+   
+if (event.target === activePopup || event.target.classList.contains('popup__close')) { 
+      const openPopup = document.querySelector('.popup_is-opened');
+      closePopup(openPopup);
   }
 }
 
-function removeEventListeners() {
-  // Убираем обработчик на клик по оверлею
-  const popups = document.querySelectorAll('.popup');
-  popups.forEach(popup => {
-    popup.removeEventListener('click', closeModal);
-  });
+// function closePopup(popup) {
+//   const activePopup = popup.currentTarget;
+//   const openPopup = document.querySelector('.popup_is-opened');
 
-  // Убираем обработчик на клавишу Escape
-  document.removeEventListener('keydown', closeModal);
-}
+//   // Закрытие по клику на оверлей или по кнопке закрытия
+//   if (popup.target === activePopup || popup.target.classList.contains('popup__close')) {
+//     openPopup.classList.remove('popup_is-opened');
+//     removeEventListeners();
+//   }
+//   // Закрытие по нажатию Escape
+//   if (popup.key === 'Escape') {  
+//     if (openPopup) {
+//       openPopup.classList.remove('popup_is-opened');
+//       removeEventListeners();
+//     }
+//   }
+// }
+
